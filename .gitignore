@@ -1,0 +1,49 @@
+# 忽略static目录下的图片文件
+static/character_images/**/*.jpg
+static/character_images/**/*.jpeg
+static/character_images/**/*.png
+static/character_images/**/*.gif
+static/character_images/**/*.webp
+static/character_images_face/**/*.jpg
+static/character_images_face/**/*.jpeg
+static/character_images_face/**/*.png
+static/character_images_face/**/*.gif
+static/character_images_face/**/*.webp
+
+# 保留目录结构
+!static/character_images/
+!static/character_images_face/
+!static/placeholder.jpg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>角色图片评分系统</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="login-container" style="display: none;">
+        <h1>角色图片评分系统</h1>
+        <div class="login-form">
+            <h2>请输入您的标识</h2>
+            <input type="text" id="user-input" placeholder="请输入您的名字或ID">
+            <button onclick="setUser()">开始评分</button>
+        </div>
+    </div>
+    <div id="main-container" style="display: none;">
+        <h1>角色图片评分</h1>
+        <div class="user-info">
+            <span>当前用户: <strong id="current-user"></strong></span>
+            <div class="user-actions">
+                <button onclick="showRatingHistory()" class="secondary-button">历史记录</button>
+                <button onclick="resetUser()" class="primary-button">切换用户</button>
+            </div>
+        </div>
+        <div id="character-info"></div>
+        <div id="images-container"></div>
+        <div id="rating-container">
+            <h3>请选择喜欢的图片</h3>
+            <div class="selection-info">已选择: <span id="selected-count">0</span> 张图片</div>
+            <button onclick="submitSelection()" class="primary-button">提交选择</button>
+        </div>
+    </div>
+    <script src="/frontend/script.js"></script>
+</body>
+</html> 

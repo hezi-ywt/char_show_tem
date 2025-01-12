@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "6783d83d5ac7c125b89ef4a9",
+    "character_id": "hakurei_reimu",
+    "selected_images": [
+      {
+        "filename": "Comfy_0004.jpeg",
+        "type": "full"
+      },
+      {
+        "filename": "Comfy_0001.jpeg",
+        "type": "face"
+      }
+    ],
+    "user_id": "hezi",
+    "timestamp": "2025-01-12T14:57:01.489000"
+  },
+  {
+    "_id": "6783d8485ac7c125b89ef4aa",
+    "character_id": "zuikaku_(kancolle)",
+    "selected_images": [
+      {
+        "filename": "Comfy_0004.jpeg",
+        "type": "full"
+      },
+      {
+        "filename": "Comfy_0004.jpeg",
+        "type": "face"
+      }
+    ],
+    "user_id": "hezi",
+    "timestamp": "2025-01-12T14:57:12.024000"
+  },
+  {
+    "_id": "6783d8525ac7c125b89ef4ab",
+    "character_id": "zhongli_(genshin_impact)",
+    "selected_images": [
+      {
+        "filename": "Comfy_0003.jpeg",
+        "type": "face"
+      },
+      {
+        "filename": "Comfy_0001.jpeg",
+        "type": "full"
+      }
+    ],
+    "user_id": "hezi",
+    "timestamp": "2025-01-12T14:57:22.774000"
+  },
+  {
+    "_id": "6783d8565ac7c125b89ef4ac",
+    "character_id": "zero_two_(darling_in_the_franxx)",
+    "selected_images": [
+      {
+        "filename": "Comfy_0002.jpeg",
+        "type": "full"
+      },
+      {
+        "filename": "Comfy_0004.jpeg",
+        "type": "face"
+      }
+    ],
+    "user_id": "hezi",
+    "timestamp": "2025-01-12T15:07:06.656000"
+  },
+  {
+    "_id": "6783d9a1fe3dc61df9a7d00c",
+    "character_id": "yuzuki_yukari",
+    "selected_images": [
+      {
+        "filename": "Comfy_0001.jpeg",
+        "type": "face"
+      },
+      {
+        "filename": "Comfy_0001.jpeg",
+        "type": "full"
+      }
+    ],
+    "user_id": "hezi",
+    "timestamp": "2025-01-12T15:08:53.309000"
+  }
+]
