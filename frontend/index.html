@@ -28,7 +28,10 @@
         <div id="rating-container">
             <h3>请选择喜欢的图片</h3>
             <div class="selection-info">已选择: <span id="selected-count">0</span> 张图片</div>
-            <button onclick="submitSelection()" class="primary-button">提交选择</button>
+            <div class="button-group">
+                <button onclick="submitSelection()" class="primary-button">提交选择</button>
+                <button onclick="skipCharacter()" class="secondary-button">没有满意的图片</button>
+            </div>
         </div>
     </div>
     <script src="/frontend/script.js"></script>

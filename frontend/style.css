@@ -506,4 +506,25 @@ button:hover {
     color: #666;
     font-size: 0.9em;
     margin: 10px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.secondary-button {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.secondary-button:hover {
+    background: #5a6268;
 } 

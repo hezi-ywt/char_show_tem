@@ -4,6 +4,7 @@ import asyncio
 import time
 import os
 from datetime import datetime
+import random  # 添加在文件开头
 
 class Database:
     def __init__(self):
@@ -66,10 +67,11 @@ class Database:
             if not unrated_characters:
                 return None
             
-            # 对角色进行排序，优先返回同时具有脸部和全身图片的角色
+            # 对角色进行排序，优先返回同时具有脸部和全身图片的角色，次要条件随机
+            random.shuffle(unrated_characters)  # 先随机打乱
             unrated_characters.sort(key=lambda x: (
                 bool(x["face_images"] and x["full_body_images"]),  # 首要条件：是否同时具有两种图片
-                len(x["face_images"] or []) + len(x["full_body_images"] or [])  # 次要条件：图片总数
+                random.random()  # 次要条件：随机顺序
             ), reverse=True)
             
             return unrated_characters[0]  # 返回排序后的第一个角色

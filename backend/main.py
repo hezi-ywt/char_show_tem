@@ -43,7 +43,6 @@ async def rate_character(rating: Rating):
         result = await db.save_rating(rating_dict)
         return {"status": "success", "id": str(result["inserted_id"])}
     except Exception as e:
-        print(f"Error saving rating: {e}")  # 调试用
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/character/details")

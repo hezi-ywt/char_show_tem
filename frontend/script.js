@@ -162,6 +162,19 @@ function displayCharacter() {
         ${createImageGrid(currentCharacter.face_images || [], 'face', 'character_images_face')}
         ${createImageGrid(currentCharacter.full_body_images || [], 'full', 'character_images')}
     `;
+
+    // 更新rating-container的内容
+    const ratingContainer = document.getElementById('rating-container');
+    if (ratingContainer) {
+        ratingContainer.innerHTML = `
+            <h3>请选择喜欢的图片</h3>
+            <div class="selection-info">已选择: <span id="selected-count">${selectedImages.size}</span> 张图片</div>
+            <div class="button-group">
+                <button onclick="submitSelection()" class="primary-button">提交选择</button>
+                <button onclick="skipCharacter()" class="secondary-button">没有满意的图片</button>
+            </div>
+        `;
+    }
 }
 
 function selectImage(imagePath, type) {
@@ -177,29 +190,23 @@ function selectImage(imagePath, type) {
     document.getElementById('selected-count').textContent = selectedImages.size;
 }
 
+// 先定义submitSelection
 async function submitSelection() {
-    if (selectedImages.size === 0) {
-        alert('请至少选择一张图片！');
-        return;
-    }
-    
     // 获取当前选择的图片
     const selectedFileNames = Array.from(selectedImages).map(url => {
         const parts = url.split('/');
         const type = parts[2].includes('face') ? 'face' : 'full';
         return {
-            filename: parts.pop(),
+            filename: parts[parts.length - 1],
             type: type
         };
     });
     
-    // 更新当前角色的selected_images
-    currentCharacter.selected_images = selectedFileNames;
-    
     const ratingData = {
         character_id: currentCharacter.character,
         selected_images: selectedFileNames,
-        user_id: localStorage.getItem('userId')
+        user_id: localStorage.getItem('userId'),
+        is_skipped: selectedFileNames.length === 0
     };
     
     try {
@@ -217,8 +224,7 @@ async function submitSelection() {
         });
         
         if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.detail || '提交失败');
+            throw new Error('提交失败');
         }
         
         // 清除选择和编辑状态
@@ -226,17 +232,22 @@ async function submitSelection() {
         document.getElementById('selected-count').textContent = '0';
         localStorage.removeItem('editingRatingId');
         
-        // 返回历史记录页面
-        if (editingRatingId) {
-            showRatingHistory();
-        } else {
-            loadCharacter();
-        }
+        // 加载下一个角色
+        loadCharacter();
+        
     } catch (error) {
-        console.error('Error submitting selection:', error);
-        alert('提交失败，请重试！' + error.message);
+        console.error('Error:', error);
+        alert('提交失败，请重试！');
     }
 }
+
+// 然后定义skipCharacter
+function skipCharacter() {
+    selectedImages.clear();
+    document.getElementById('selected-count').textContent = '0';
+    submitSelection();
+}
+
 
 async function loadCharacterDetails(characterName) {
     try {
@@ -382,8 +393,11 @@ function showRatingInterface(isEditing = false) {
         <div id="images-container"></div>
         <div id="rating-container">
             <h3>请选择喜欢的图片</h3>
-            <div class="selection-info">已选择: <span id="selected-count">${selectedImages.size}</span> 张图片</div>
-            <button onclick="submitSelection()" class="primary-button">提交选择</button>
+            <div class="selection-info">已选择: <span id="selected-count">0</span> 张图片</div>
+            <div class="button-group">
+                <button onclick="submitSelection()" class="primary-button">提交选择</button>
+                <button onclick="skipCharacter()" class="secondary-button">没有满意的图片</button>
+            </div>
         </div>
     `;
     
@@ -399,3 +413,4 @@ function showRatingInterface(isEditing = false) {
         displayCharacter();
     }
 } 
+
