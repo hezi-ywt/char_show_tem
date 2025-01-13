@@ -9,7 +9,7 @@ static/character_images_face/**/*.jpeg
 static/character_images_face/**/*.png
 static/character_images_face/**/*.gif
 static/character_images_face/**/*.webp
-
+db/*
 # 保留目录结构
 !static/character_images/
 !static/character_images_face/
