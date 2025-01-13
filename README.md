@@ -174,6 +174,45 @@ python import_db.py
 mongosh --port 27017 --eval "use dan; db.char_detailed_info.count()"
 ```
 
+## 🔍 数据库查看
+
+查看数据库内容：
+```bash
+# 1. 连接MongoDB
+mongosh --port 27017
+
+# 2. 切换到dan数据库
+use dan
+
+# 3. 查看所有集合
+show collections
+
+# 4. 查看角色信息表的数据量
+db.char_detailed_info.count()
+
+# 5. 查看评分记录表的数据量
+db.character_rating.count()
+
+# 6. 查看最新的评分记录
+db.character_rating.find().sort({timestamp: -1}).limit(5)
+
+# 7. 查看特定用户的评分记录
+db.character_rating.find({user_id: "你的用户ID"})
+
+# 8. 查看特定角色的信息
+db.char_detailed_info.find({character: "角色ID"})
+
+# 退出MongoDB shell
+exit
+```
+
+常用查询命令：
+- 查看表内容：`db.表名.find()`
+- 格式化显示：`db.表名.find().pretty()`
+- 限制显示数量：`db.表名.find().limit(5)`
+- 按时间排序：`db.表名.find().sort({timestamp: -1})`
+- 统计数量：`db.表名.count()`
+
 ## 📄 许可证
 
 MIT License
